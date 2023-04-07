@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    /* ~ 1rem */
+}
+
+:root {
+    --card_width: 15.625rem;
+    /*~250px Anchura de la tarjeta/pin */
+    --row_increment: 0.625rem;
+    /*~10px Al estar usando CSS grid, cada tarjeta/pin estará hecha con incrementos de 10px para las filas */
+    --card_border_radius: 1rem;
+    /*~16px  Redondeo en los bordes de las tarjetas/pines*/
+    --card_small: 26;
+    /* Factor de crecimiento para tarjetas pequeñas: 26*0.625rem */
+    --card_medium: 33;
+    /* Factor de crecimiento para tarjetas medianas: 26*0.625rem */
+    --card_large: 45;
+    /* Factor de crecimiento para tarjetas grandes: 26*0.625rem */
+}
+
+#content {
+    height: 100vh;
+    width: 100%;
+    background-color: blanchedalmond;
+}
+
+nav {
+    height: 5rem;
+    background-color: brown;
+    display: flex;
+}
+
+.navbar_pinterest_buttons_container {
+    width: 16rem;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    padding-inline-start: 0.5rem;
+}
+
+.navbar_input_search_container {
+    flex-grow: 4;
+    min-width: 3rem;
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar_input_search {
+    margin-inline: 0.8rem;
+    padding-inline-start: 0.8rem;
+    height: 3rem;
+    width: 100%;
+    background-color: #e9e9e9;
+    border-radius: 1.5rem;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar_input_search>svg {
+    height: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navbar_input_search>input {
+    height: 2rem;
+    flex-grow: 3;
+    margin-inline-end: 1rem;
+    margin-inline-start: 0.8rem;
+    background-color: transparent;
+    border-style: none;
+}
+
+.navbar_input_search>input:focus-visible {
+    outline: none;
+}
+
+.navbar_user_buttons_container {
+    width: 13rem;
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+#notifications{
+    background-color: rgb(253, 253, 253);
+    color: rgb(163, 163, 163);
+    border:0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+#notifications:hover{
+    background-color: rgb(190, 190, 190);
+}
+
+#notifications:focus{
+    color: rgb(8, 8, 8);
+}
+
+#message{
+    background-color: rgb(253, 253, 253);
+    color: rgb(163, 163, 163);
+    border:0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+
+#message:hover{
+    background-color: rgb(190, 190, 190);
+}
+
+#message:focus{
+    color: rgb(0, 0, 0);
+}
+
+#porfile-img{
+    background-color: rgb(253, 253, 253);
+    color: rgb(163, 163, 163);
+    border:0;
+    border-radius: 50%;
+}
+
+#porfile-img:hover{
+    background-color: rgb(190, 190, 190);
+    width: 3rem;
+    height: 3rem;
+}
+
+#porfile-img:focus{
+    color: rgb(0, 0, 0);
+}
+
+#dropdown_user{
+    background-color: rgb(252, 252, 252);
+    color: rgb(163, 163, 163);
+    border:0;
+    width: 5rem;
+    height: 4rem;
+    border-radius: 10%;
+}
+
+
+#dropdown_user:hover{
+    background-color: rgb(190, 190, 190);
+}
+
+#dropdown_user:focus{
+    color: rgb(0, 0, 0);
+}
+
+#pinteres-icon{
+    background-color: rgb(255, 255, 255);
+    color: rgb(151, 3, 3);
+    
+}
+
+.pin_container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card_width));
+    grid-auto-rows: var(--row_increment);
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.card {
+    position: relative;
+    padding: 0;
+    margin: 15px 10px;
+    border-radius: var(--card_border_radius);
+    background-color: rgb(255, 255, 255);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    background-color: crimson;
+    border-radius: var(--card_border_radius);
+}
+
+.card_buttons_on_hover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.493);
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: var(--card_border_radius);
+}
+
+.card_buttons_on_hover:hover {
+    opacity: 1;
+}
+
+.card_small {
+    grid-row-end: span var(--card_small);
+}
+
+.card_medium {
+    grid-row-end: span var(--card_medium);
+}
+
+.card_large {
+    grid-row-end: span var(--card_large);
+}
+
+img{
+object-fit: cover;
+width: 100%;
+height: 100%;
+border-radius: var(--card_border_radius);
+
+}
+
+.boton_guardar {
+    background-color: #e60023;
+    border-radius: 999px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+}
+
+.arriba{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    padding: 0.5rem;
+    
+}
+
+.bajo{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    padding: 0.5rem;
+    
+}
+
+.update{
+    width: 3rem;
+    height: 3rem;
+    justify-content: end;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgba(255,255,255,0.3);
+    margin-inline-end: 0.5rem;
+    
+}
+
+.trespuntos{
+    width: 3rem;
+    height: 3rem;
+    justify-content: end;
+    border-radius: 50%;
+    border: 0;
+    background-color: rgba(255,255,255,0.3);
+}
+
+
+.trespuntos:hover {
+    background-color: #e9e9e9;
+}
+
+
+.update:hover {
+    background-color: #e9e9e9;
+}
+
+
+@media (max-widht: 800px) {
+    #message {
+        display: none;
+    }
+
+}
